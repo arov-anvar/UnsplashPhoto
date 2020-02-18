@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UnsplashPhoto</string>
+    <string name="random">Фото</string>
+    <string name="collections">Коллекция</string>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/android_navigation.xml"
+    app:startDestination="@id/dailyPictureFragment">
+
+    <fragment
+        android:id="@+id/dailyPictureFragment"
+        android:name="com.example.unsplashphoto.fragments.DailyPictureFragment"
+        android:label="daily_picture_fragment"
+        tools:layout="@layout/daily_picture_fragment" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.unsplashphoto.fragments.GalleryFragment"
+        android:label="gallery_fragment"
+        tools:layout="@layout/gallery_fragment" />
+</navigation>
