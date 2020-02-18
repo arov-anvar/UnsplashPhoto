@@ -1,4 +1,4 @@
-package com.example.unsplashphoto.fragments
+package com.example.unsplashphoto.fragments.daily
 
 import androidx.lifecycle.ViewModel
 

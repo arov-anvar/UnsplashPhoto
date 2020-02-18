@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/dailyPictureFragment"
-        android:name="com.example.unsplashphoto.fragments.DailyPictureFragment"
+        android:name="com.example.unsplashphoto.fragments.daily.DailyPictureFragment"
         android:label="daily_picture_fragment"
         tools:layout="@layout/daily_picture_fragment" />
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.unsplashphoto.fragments.GalleryFragment"
+        android:name="com.example.unsplashphoto.fragments.gallery.GalleryFragment"
         android:label="gallery_fragment"
         tools:layout="@layout/gallery_fragment" />
 </navigation>

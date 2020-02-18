@@ -2,4 +2,6 @@
     <string name="app_name">UnsplashPhoto</string>
     <string name="random">Фото</string>
     <string name="collections">Коллекция</string>
+    <string name="watch">Просмотр</string>
+    <string name="user_test">Angelina</string>
 </resources>
