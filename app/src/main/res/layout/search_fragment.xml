@@ -3,14 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/galleryFragment"
-    tools:context=".ui.gallery.GalleryFragment">
+    android:id="@+id/searchFragment"
+    tools:context=".ui.search.SearchFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/galleryRecycler"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/collection_row"
-        android:layout_marginBottom="?attr/actionBarSize"/>
+        android:text="@string/search" />
 
 </FrameLayout>

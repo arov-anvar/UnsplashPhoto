@@ -4,4 +4,6 @@
     <string name="collections">Коллекция</string>
     <string name="watch">Просмотр</string>
     <string name="user_test">Angelina</string>
+    <string name="search">Поиск</string>
+    <string name="ten_photo">10 Фотографий</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.unsplashphoto.fragments.gallery
+package com.example.unsplashphoto.ui.search
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,26 +9,24 @@ import android.view.ViewGroup
 
 import com.example.unsplashphoto.R
 
-class GalleryFragment : Fragment() {
+class SearchFragment : Fragment() {
 
     companion object {
-        fun newInstance() =
-            GalleryFragment()
+        fun newInstance() = SearchFragment()
     }
 
-    private lateinit var viewModel: GalleryViewModel
+    private lateinit var viewModel: SearchViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.gallery_fragment, container, false)
+        return inflater.inflate(R.layout.search_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
     }
 
 }

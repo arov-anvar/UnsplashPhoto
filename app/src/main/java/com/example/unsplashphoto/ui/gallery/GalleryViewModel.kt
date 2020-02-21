@@ -1,4 +1,4 @@
-package com.example.unsplashphoto.fragments.gallery
+package com.example.unsplashphoto.ui.gallery
 
 import androidx.lifecycle.ViewModel
 

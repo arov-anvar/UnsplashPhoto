@@ -28,6 +28,11 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.galleryFragment)
                     return@setOnNavigationItemSelectedListener true
                 }
+
+                R.id.menu_search -> {
+                    navController.navigate(R.id.searchFragment)
+                    return@setOnNavigationItemSelectedListener true
+                }
             }
 
             return@setOnNavigationItemSelectedListener true
