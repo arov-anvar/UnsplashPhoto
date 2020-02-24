@@ -10,15 +10,27 @@
         android:name="com.example.unsplashphoto.ui.daily.DailyPictureFragment"
         android:label="daily_picture_fragment"
         tools:layout="@layout/daily_picture_fragment" />
+
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.unsplashphoto.ui.gallery.GalleryFragment"
         android:label="gallery_fragment"
-        tools:layout="@layout/gallery_fragment" />
+        tools:layout="@layout/gallery_fragment" >
+        <action
+            android:id="@+id/action_galleryFragment_to_collectionFragment"
+            app:destination="@+id/collectionFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.unsplashphoto.ui.search.SearchFragment"
         android:label="search_fragment"
-        tools:layout="@layout/search_fragment"/>
+        tools:layout="@layout/search_fragment" />
+
+    <fragment
+        android:id="@+id/collectionFragment"
+        android:name="com.example.unsplashphoto.ui.collection.CollectionFragment"
+        android:label="collection_fragment"
+        tools:layout="@layout/collection_fragment" />
 
 </navigation>

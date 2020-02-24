@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.unsplashphoto.R
+import com.example.unsplashphoto.ui.dialogs.InfoBottomSheet
+import kotlinx.android.synthetic.main.daily_picture_fragment.*
 
 class DailyPictureFragment : Fragment() {
 
@@ -29,6 +31,15 @@ class DailyPictureFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DailyPictureViewModel::class.java)
         // TODO: Use the ViewModel
+
+        btnInfo.setOnClickListener {
+            showInfoDialog()
+        }
+    }
+
+    private fun showInfoDialog() {
+        val dialog = InfoBottomSheet.newInstance()
+        dialog.show(activity!!.supportFragmentManager, dialog.tag)
     }
 
 }

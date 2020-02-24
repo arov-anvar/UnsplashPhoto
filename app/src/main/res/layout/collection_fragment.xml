@@ -3,17 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/searchFragment"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.collection.CollectionFragment">
 
-    <Toolbar
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/collectionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/search" />
+        android:padding="8dp"
+        tools:listitem="@layout/collection_row"
+        android:layout_marginBottom="?attr/actionBarSize"/>
 
 </FrameLayout>

@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryAdapter
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryItem
+import com.example.unsplashphoto.ui.mapToGalleryItem
 import kotlinx.android.synthetic.main.gallery_fragment.*
 
 class GalleryFragment : Fragment() {
@@ -40,17 +42,9 @@ class GalleryFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
-        galleryAdapter.setItems(mock())
-    }
-
-    fun mock(): MutableList<GalleryItem> {
-        val items = mutableListOf<GalleryItem>()
-        items.add(GalleryItem(R.drawable.space, "Space", 10))
-        items.add(GalleryItem(R.drawable.space, "Space", 20))
-        items.add(GalleryItem(R.drawable.space, "Space", 40))
-        items.add(GalleryItem(R.drawable.space, "Space", 89))
-        items.add(GalleryItem(R.drawable.space, "Space", 15))
-        return items
+        viewModel.getItems().observe(this, Observer { collections ->
+            galleryAdapter.setItems(collections.mapToGalleryItem())
+        })
     }
 
 }

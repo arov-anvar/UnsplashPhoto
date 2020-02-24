@@ -1,20 +1,20 @@
-package com.example.unsplashphoto.ui.gallery
+package com.example.unsplashphoto.ui.collection
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.NetworkApiService
-import com.example.unsplashphoto.data.collections.CollectionResponse
+import com.example.unsplashphoto.data.photos.PhotosResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class GalleryViewModel : ViewModel() {
+class CollectionViewModel : ViewModel() {
     private val viewModelJob = SupervisorJob()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private val galleryItem = MutableLiveData<List<CollectionResponse>>()
+    private val photoItems = MutableLiveData<List<PhotosResponse>>()
 
     @Inject
     lateinit var apiService: NetworkApiService
@@ -23,17 +23,17 @@ class GalleryViewModel : ViewModel() {
         AppDelegate.appComponent.inject(this)
     }
 
-    private suspend fun getItemsFromNetwork(): List<CollectionResponse> {
-        return apiService.getCollectionsAsync().await()
+    private suspend fun getPhotosFromNetwork(id: Int): List<PhotosResponse> {
+        return apiService.getCollectionPhotosAsyns(id).await()
     }
 
-    fun getItems(): MutableLiveData<List<CollectionResponse>> {
+    fun getItem(id: Int): MutableLiveData<List<PhotosResponse>> {
         uiScope.launch {
-            val result = getItemsFromNetwork()
-            galleryItem.value = result
+            val result = getPhotosFromNetwork(id)
+            photoItems.value = result
         }
 
-        return galleryItem
+        return photoItems
     }
 
     override fun onCleared() {

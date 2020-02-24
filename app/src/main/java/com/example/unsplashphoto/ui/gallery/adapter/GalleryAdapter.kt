@@ -1,13 +1,18 @@
 package com.example.unsplashphoto.ui.gallery.adapter
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
+import com.example.unsplashphoto.ui.loadImage
+
+const val COLLECTION_ID = "id"
 
 class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
@@ -25,9 +30,16 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() 
 
         @SuppressLint("SetTextI18n")
         fun bind(item: GalleryItem) {
-            galleryImg.setImageResource(item.photo)
+            galleryImg.loadImage(item.photo)
             collectionNameTxt.text = item.title
             itemCountTxt.text = "${item.itemCount} фотографий"
+
+            itemView.setOnClickListener{
+                val args = Bundle().apply {
+                    putInt(COLLECTION_ID, item.id)
+                }
+                itemView.findNavController().navigate(R.id.collectionFragment, args)
+            }
         }
 
     }
