@@ -2,6 +2,7 @@ package com.example.unsplashphoto.data.repository
 
 import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.NetworkApiService
+import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import javax.inject.Inject
 
@@ -14,5 +15,9 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Network
 
     override suspend fun getCollectionByIdAsync(id: Int, page: Int, perPage: Int): List<PhotoResp> =
         apiService.getCollectionPhotosByIdAsync(id, page, perPage).await()
+
+    override suspend fun getCollectionsAsync(page: Int, perPage: Int): List<GalleryResp> =
+        apiService.getCollectionsAsync(page, perPage).await()
+
 
 }

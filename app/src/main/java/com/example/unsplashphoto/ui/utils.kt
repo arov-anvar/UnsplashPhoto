@@ -6,7 +6,7 @@ import com.example.unsplashphoto.R
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.ui.collection.CurrentItem
-import com.example.unsplashphoto.ui.gallery.adapter.GalleryItem
+import com.example.unsplashphoto.ui.gallery.adapter.Collection
 
 fun ImageView.loadImage(url : String) {
     Glide.with(this)
@@ -16,16 +16,16 @@ fun ImageView.loadImage(url : String) {
         .into(this)
 }
 
-fun List<GalleryResp>.mapToGalleryItem(): MutableList<GalleryItem> {
-    val result = mutableListOf<GalleryItem>()
+
+fun List<GalleryResp>.mapToGalleryItem(): MutableList<Collection> {
+    val result = mutableListOf<Collection>()
     this.forEach {
         result.add(
-            GalleryItem(
+            Collection(
                 id = it.id,
                 photo = it.coverPhoto.urls.raw,
-                title =  it.title,
-                itemCount = it.totalPhotos
-            )
+                title = it.title,
+                itemsCount = it.totalPhotos)
         )
     }
 

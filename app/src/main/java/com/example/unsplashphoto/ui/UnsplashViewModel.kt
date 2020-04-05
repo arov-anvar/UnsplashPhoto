@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.unsplashphoto.AppDelegate
+import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
 import kotlinx.coroutines.cancel
@@ -28,6 +29,16 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
 
         return collectionLive
+    }
+
+    fun getCollections(page: Int, perPage: Int): MutableLiveData<List<GalleryResp>> {
+        val collectionsLive = MutableLiveData<List<GalleryResp>>()
+        viewModelScope.launch {
+            val collections = repository.getCollectionsAsync(page, perPage)
+            collectionsLive.value = collections
+        }
+
+        return collectionsLive
     }
 
     override fun onCleared() {

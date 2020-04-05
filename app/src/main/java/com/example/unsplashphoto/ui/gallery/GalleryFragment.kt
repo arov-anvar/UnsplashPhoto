@@ -12,18 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryAdapter
-import com.example.unsplashphoto.ui.gallery.adapter.GalleryItem
 import com.example.unsplashphoto.ui.mapToGalleryItem
 import kotlinx.android.synthetic.main.gallery_fragment.*
 
 class GalleryFragment : Fragment() {
 
     private val galleryAdapter = GalleryAdapter()
-
-    companion object {
-        fun newInstance() =
-            GalleryFragment()
-    }
+    private val linearLayoutManager = LinearLayoutManager(context)
 
     private lateinit var viewModel: UnsplashViewModel
 
@@ -42,6 +37,16 @@ class GalleryFragment : Fragment() {
             adapter = galleryAdapter
             layoutManager = LinearLayoutManager(context)
         }
+
+        loadGalleryItems(1)
+    }
+
+    private fun loadGalleryItems(page: Int) {
+        viewModel.getCollections(page, 10).observe(viewLifecycleOwner, Observer {collections ->
+            galleryRecycler.visibility = View.VISIBLE
+            progressBar.visibility = View.GONE
+            galleryAdapter.setItems(collections.mapToGalleryItem())
+        })
     }
 
 }

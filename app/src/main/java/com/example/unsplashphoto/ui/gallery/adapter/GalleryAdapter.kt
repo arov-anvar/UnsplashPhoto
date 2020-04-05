@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
@@ -16,9 +17,9 @@ const val COLLECTION_ID = "id"
 
 class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
-    private var items = mutableListOf<GalleryItem>()
+    private var items = mutableListOf<Collection>()
 
-    fun setItems(galleryItems: MutableList<GalleryItem>) {
+    fun setItems(galleryItems: MutableList<Collection>) {
         this.items = galleryItems
         notifyDataSetChanged()
     }
@@ -29,15 +30,13 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() 
         private val itemCountTxt : TextView = itemView.findViewById(R.id.itemCountTxt)
 
         @SuppressLint("SetTextI18n")
-        fun bind(item: GalleryItem) {
+        fun bind(item: Collection) {
             galleryImg.loadImage(item.photo)
             collectionNameTxt.text = item.title
-            itemCountTxt.text = "${item.itemCount} фотографий"
+            itemCountTxt.text = "${item.itemsCount} фотографий"
 
             itemView.setOnClickListener{
-                val args = Bundle().apply {
-                    putInt(COLLECTION_ID, item.id)
-                }
+                val args = bundleOf("id" to item.id)
                 itemView.findNavController().navigate(R.id.collectionFragment, args)
             }
         }

@@ -52,8 +52,11 @@ interface NetworkApiService {
         }
     }
 
-    @GET("/collections?per_page=30&page=10")
-    fun getGalleryAsync(): Deferred<List<GalleryResp>>
+    @GET("/collections")
+    fun getCollectionsAsync(
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Deferred<List<GalleryResp>>
 
     @GET("/collections/{id}/photos")
     fun getCollectionPhotosByIdAsync(
