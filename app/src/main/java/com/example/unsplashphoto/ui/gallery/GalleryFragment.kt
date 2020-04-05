@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.unsplashphoto.R
+import com.example.unsplashphoto.ui.UnsplashViewModel
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryAdapter
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryItem
 import com.example.unsplashphoto.ui.mapToGalleryItem
@@ -24,7 +25,7 @@ class GalleryFragment : Fragment() {
             GalleryFragment()
     }
 
-    private lateinit var viewModel: GalleryViewModel
+    private lateinit var viewModel: UnsplashViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,16 +36,12 @@ class GalleryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(GalleryViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(UnsplashViewModel::class.java)
 
         with(galleryRecycler) {
             adapter = galleryAdapter
             layoutManager = LinearLayoutManager(context)
         }
-
-        viewModel.getItems().observe(this, Observer { collections ->
-            galleryAdapter.setItems(collections.mapToGalleryItem())
-        })
     }
 
 }

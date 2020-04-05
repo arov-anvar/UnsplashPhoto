@@ -1,0 +1,37 @@
+package com.example.unsplashphoto.ui
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.unsplashphoto.AppDelegate
+import com.example.unsplashphoto.data.photos.PhotoResp
+import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+class UnsplashViewModel(application: Application): AndroidViewModel(application) {
+
+    @Inject
+    lateinit var repository: UnsplashRepositoryImpl
+
+    init {
+        AppDelegate.appComponent.inject(this)
+    }
+
+    fun getCollection(id: Int, page: Int, perPage: Int): MutableLiveData<List<PhotoResp>> {
+        val collectionLive = MutableLiveData<List<PhotoResp>>()
+        viewModelScope.launch {
+            val collection = repository.getCollectionByIdAsync(id, page, perPage)
+            collectionLive.value = collection
+        }
+
+        return collectionLive
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.cancel()
+    }
+}
