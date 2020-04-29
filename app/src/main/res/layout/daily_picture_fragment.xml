@@ -7,123 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".ui.daily.DailyPictureFragment">
 
-
-    <androidx.cardview.widget.CardView
+    <ImageView
+        android:id="@+id/dailyPictureImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:padding="8dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:src="@drawable/space"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:scaleType="centerCrop"
-            android:src="@drawable/space" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/authorImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/dailyPictureImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        tools:src="@drawable/angelina"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="300dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/countLikesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textFontWeight="800"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dailyPictureImageView"
+        tools:text="101 likes"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/colorGreen"
-                android:orientation="horizontal">
+    <TextView
+        android:id="@+id/permissionPictureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/colorBlack"
+        android:textFontWeight="800"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dailyPictureImageView"
+        tools:text="4000x3000px"/>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImg"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="16dp"
-                    android:src="@drawable/angelina" />
+    <TextView
+        android:id="@+id/authorFullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:textFontWeight="800"
+        app:layout_constraintTop_toBottomOf="@+id/authorImageView"
+        app:layout_constraintStart_toStartOf="@+id/authorImageView"
+        app:layout_constraintEnd_toEndOf="@id/authorImageView"
+        tools:text="Bob Martin"/>
 
-                <TextView
-                    android:id="@+id/nameTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="1"
-                    android:text="@string/user_test"
-                    android:textColor="@color/colorBlack" />
-
-                <ImageButton
-                    android:id="@+id/btnInfo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/colorGreen"
-                    android:src="@drawable/ic_info_outline_foreground" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:id="@+id/Txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="8dp"
-                    android:text="@string/app_name"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/likesTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_favorite_foreground"
-                    android:drawablePadding="8dp"
-                    android:gravity="left|center"
-                    android:padding="8dp"
-                    android:text="like" />
-
-                <TextView
-                    android:id="@+id/txtDownloads"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_file_download_foreground"
-                    android:drawablePadding="8dp"
-                    android:gravity="left|center"
-                    android:padding="8dp"
-                    android:text="Скачать" />
-
-                <TextView
-                    android:id="@+id/txtTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_date_range_foreground"
-                    android:drawablePadding="8dp"
-                    android:gravity="left|center"
-                    android:padding="8dp"
-                    android:text="@string/app_name" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/authorFullNameTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorGrey"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/authorFullNameTextView"
+        app:layout_constraintStart_toStartOf="@+id/authorFullNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/authorFullNameTextView"
+        tools:text="@bob_martin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
