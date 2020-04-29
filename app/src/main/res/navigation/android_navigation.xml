@@ -17,8 +17,21 @@
         android:label="gallery_fragment"
         tools:layout="@layout/gallery_fragment" >
         <action
+
             android:id="@+id/action_galleryFragment_to_collectionFragment"
             app:destination="@+id/collectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/currentCollectionFragment"
+        android:name="com.example.unsplashphoto.ui.collection.CurrentCollectionFragment"
+        android:label="current_collection_fragment"
+        tools:layout="@layout/current_collection_fragment">
+        <action
+            android:id="@+id/action_galleryFragment_to_collectionFragment"
+            app:destination="@+id/currentCollectionFragment">
+            <argument android:name="photoUrl" app:argType="string"/>
+        </action>
     </fragment>
 
     <fragment

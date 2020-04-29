@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.loadImage
 
-const val COLLECTION_ID = "id"
 
 class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {
 
     private var items = mutableListOf<Collection>()
 
     fun setItems(galleryItems: MutableList<Collection>) {
-        this.items = galleryItems
+        this.items.clear()
+        this.items.addAll(galleryItems)
         notifyDataSetChanged()
     }
 
@@ -37,7 +37,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() 
 
             itemView.setOnClickListener{
                 val args = bundleOf("id" to item.id)
-                itemView.findNavController().navigate(R.id.collectionFragment, args)
+                itemView.findNavController().navigate(R.id.currentCollectionFragment, args)
             }
         }
 
