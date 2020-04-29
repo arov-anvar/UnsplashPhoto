@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
+import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -40,6 +41,18 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
 
         return collectionsLive
     }
+
+    fun getPictureDay(): MutableLiveData<DailyResp> {
+        val collectionLive = MutableLiveData<DailyResp>()
+        viewModelScope.launch {
+            val photoes = repository.getMostPopularPicture()
+            photoes.sortedBy { it.likes }
+            collectionLive.value = photoes[9]
+        }
+
+        return collectionLive
+    }
+
 
     override fun onCleared() {
         super.onCleared()

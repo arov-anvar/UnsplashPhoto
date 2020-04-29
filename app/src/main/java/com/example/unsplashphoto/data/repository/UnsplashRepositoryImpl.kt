@@ -4,6 +4,7 @@ import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.NetworkApiService
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
+import com.example.unsplashphoto.data.popular.DailyResp
 import javax.inject.Inject
 
 class UnsplashRepositoryImpl @Inject constructor(private val apiService: NetworkApiService) :
@@ -19,5 +20,6 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Network
     override suspend fun getCollectionsAsync(page: Int, perPage: Int): List<GalleryResp> =
         apiService.getCollectionsAsync(page, perPage).await()
 
-
+    override suspend fun getMostPopularPicture(): List<DailyResp> =
+        apiService.getMostPopularPictureAsync().await()
 }

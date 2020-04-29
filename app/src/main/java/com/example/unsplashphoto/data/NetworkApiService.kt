@@ -3,6 +3,7 @@ package com.example.unsplashphoto.data
 import com.example.unsplashphoto.BuildConfig
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
+import com.example.unsplashphoto.data.popular.DailyResp
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -64,4 +65,9 @@ interface NetworkApiService {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Deferred<List<PhotoResp>>
+
+    @GET("/photos")
+    fun getMostPopularPictureAsync(
+        @Query("order_by") orderBy: String = "popular"
+    ): Deferred<List<DailyResp>>
 }
