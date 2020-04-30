@@ -42,6 +42,8 @@ class DailyPictureFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun loadPictureDay() {
         viewModel.getPictureDay().observe(viewLifecycleOwner, Observer {
+            progressBar.visibility = View.GONE
+            mainContentConstraintLayout.visibility = View.VISIBLE
             dailyPictureImageView.loadImage(it.urls.regular)
             authorImageView.loadImage(it.user.profileImage.large)
             countLikesTextView.text = it.likes.toString()
