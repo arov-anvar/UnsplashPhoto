@@ -6,7 +6,9 @@
     android:id="@+id/searchFragment"
     tools:context=".ui.search.SearchFragment">
 
-    <Toolbar
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
