@@ -9,6 +9,7 @@ import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
+import com.example.unsplashphoto.data.search.SearchResp
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -51,6 +52,16 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
 
         return collectionLive
+    }
+
+    fun fetchPhotosByQuery(query: String, page: Int): MutableLiveData<SearchResp> {
+        val searchLive = MutableLiveData<SearchResp>()
+        viewModelScope.launch {
+            val search = repository.searchPhotoAsync(query, page)
+            searchLive.value = search
+        }
+
+        return searchLive
     }
 
 

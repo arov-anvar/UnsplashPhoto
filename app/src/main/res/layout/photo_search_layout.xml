@@ -1,0 +1,10 @@
+<androidx.appcompat.widget.SearchView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/searchView"
+    android:inputType="text"
+    app:queryHint="search"
+    android:textColor="@color/colorWhite"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</androidx.appcompat.widget.SearchView>

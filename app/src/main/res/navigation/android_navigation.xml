@@ -9,41 +9,33 @@
         android:id="@+id/dailyPictureFragment"
         android:name="com.example.unsplashphoto.ui.daily.DailyPictureFragment"
         android:label="daily_picture_fragment"
-        tools:layout="@layout/daily_picture_fragment" />
-
+        tools:layout="@layout/daily_picture_fragment" >
+    </fragment>
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.unsplashphoto.ui.gallery.GalleryFragment"
         android:label="gallery_fragment"
         tools:layout="@layout/gallery_fragment" >
         <action
-
-            android:id="@+id/action_galleryFragment_to_collectionFragment"
-            app:destination="@+id/collectionFragment" />
+            android:id="@+id/action_galleryFragment_to_currentCollectionFragment"
+            app:destination="@id/currentCollectionFragment">
+            <argument android:name="collectionId" app:argType="integer"/>
+        </action>
     </fragment>
-
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.unsplashphoto.ui.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
     <fragment
         android:id="@+id/currentCollectionFragment"
         android:name="com.example.unsplashphoto.ui.collection.CurrentCollectionFragment"
         android:label="current_collection_fragment"
         tools:layout="@layout/current_collection_fragment">
         <action
-            android:id="@+id/action_galleryFragment_to_collectionFragment"
-            app:destination="@+id/currentCollectionFragment">
+            android:id="@+id/action_galleryFragment_to_currentCollectionFragment"
+            app:destination="@id/currentCollectionFragment">
             <argument android:name="photoUrl" app:argType="string"/>
         </action>
     </fragment>
-
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.unsplashphoto.ui.search.SearchFragment"
-        android:label="search_fragment"
-        tools:layout="@layout/search_fragment" />
-
-    <fragment
-        android:id="@+id/collectionFragment"
-        android:name="com.example.unsplashphoto.ui.collection.CollectionFragment"
-        android:label="collection_fragment"
-        tools:layout="@layout/collection_fragment" />
-
 </navigation>

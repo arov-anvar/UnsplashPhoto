@@ -5,8 +5,11 @@ import com.bumptech.glide.Glide
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
+import com.example.unsplashphoto.data.search.Result
+import com.example.unsplashphoto.data.search.SearchResp
 import com.example.unsplashphoto.ui.collection.CurrentItem
 import com.example.unsplashphoto.ui.gallery.adapter.Collection
+import com.example.unsplashphoto.ui.search.Photo
 
 fun ImageView.loadImage(url : String) {
     Glide.with(this)
@@ -40,6 +43,15 @@ fun List<PhotoResp>.mapToCollectionItems(): MutableList<CurrentItem> {
                 id = it.id,
                 photoUrl = it.urls.regular
             ))
+    }
+
+    return result
+}
+
+fun List<Result>.mapToPhotos(): MutableList<Photo>  {
+    val result = mutableListOf<Photo>()
+    this.forEach {
+        result.add(Photo(it.urls.full))
     }
 
     return result

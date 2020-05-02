@@ -4,6 +4,7 @@ import com.example.unsplashphoto.BuildConfig
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
+import com.example.unsplashphoto.data.search.SearchResp
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -70,4 +71,10 @@ interface NetworkApiService {
     fun getMostPopularPictureAsync(
         @Query("order_by") orderBy: String = "popular"
     ): Deferred<List<DailyResp>>
+
+    @GET("/search/photos/")
+    fun searchPhotoAsync(
+        @Query("page") page: Int,
+        @Query("query") query: String
+    ): Deferred<SearchResp>
 }

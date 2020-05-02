@@ -16,8 +16,13 @@ class InfoBottomSheet : BottomSheetDialogFragment(){
     }
 
     companion object {
-        fun newInstance() : InfoBottomSheet {
-            return InfoBottomSheet()
+        fun newInstance(id: String): InfoBottomSheet {
+            val fragment = InfoBottomSheet()
+            val args = Bundle().apply {
+                putString("photoId", id)
+            }
+            fragment.arguments = args
+            return fragment
         }
     }
 
