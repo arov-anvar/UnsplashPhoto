@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.unsplashphoto.R
@@ -35,7 +36,7 @@ class GalleryFragment : Fragment() {
 
         with(galleryRecycler) {
             adapter = galleryAdapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
         }
 
         loadGalleryItems(1)
