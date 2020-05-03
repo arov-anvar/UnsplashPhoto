@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.current_collection_fragment.*
 
 class CurrentCollectionFragment : Fragment() {
     private val currentAdapter = CurrentAdapter()
-    private val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
     private lateinit var viewModel : UnsplashViewModel
 
     override fun onCreateView(

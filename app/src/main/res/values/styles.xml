@@ -8,11 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!--  <style name="NavigationViewFont" parent="Widget.MaterialComponents.BottomNavigationView">
-          <item name="android:fontFamily">@font/roboto</item>
-          <item name="android:textSize">14sp</item>
-      </style>-->
-
     <style name="SearchViewText" parent="Widget.AppCompat.Light.SearchView">
         <item name="android:textColorHint">@color/colorWhite</item>
     </style>

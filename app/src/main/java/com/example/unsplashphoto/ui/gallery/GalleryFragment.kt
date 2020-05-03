@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.gallery_fragment.*
 class GalleryFragment : Fragment() {
 
     private val galleryAdapter = GalleryAdapter()
-    private val linearLayoutManager = LinearLayoutManager(context)
 
     private lateinit var viewModel: UnsplashViewModel
 
