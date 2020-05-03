@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -34,7 +33,7 @@ class CurrentCollectionFragment : Fragment() {
     @SuppressLint("FragmentLiveDataObserve")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UnsplashViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
         currentAdapter.setListener(activity as MainActivity)
 
         with(imageRecycler) {

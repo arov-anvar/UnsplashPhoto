@@ -2,13 +2,10 @@ package com.example.unsplashphoto.ui.search
 
 import android.os.Bundle
 import android.view.*
-import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.MainActivity
@@ -89,7 +86,7 @@ class SearchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UnsplashViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
 
         resultsRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
