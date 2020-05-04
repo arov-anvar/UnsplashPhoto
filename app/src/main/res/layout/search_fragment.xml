@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.search.SearchFragment">
 
 
@@ -17,7 +16,7 @@
     <TextView
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:text="sttr"
+        android:text="@string/search"
         android:textAlignment="center"
         android:visibility="gone"
         android:id="@+id/txtMessage"
