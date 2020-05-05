@@ -29,6 +29,8 @@ class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
             photoImageView.loadImage(photo.photoUrl)
 
             photoImageView.setOnClickListener {
+                val args = bundleOf("urlPhoto" to photo.photoUrl)
+                itemView.findNavController().navigate(R.id.photoFragment, args)
             }
         }
     }
