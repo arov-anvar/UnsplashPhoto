@@ -12,5 +12,5 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/space" />
+        app:srcCompat="@drawable/empty" />
 </androidx.cardview.widget.CardView>

@@ -14,7 +14,7 @@ import com.example.unsplashphoto.ui.search.Photo
 fun ImageView.loadImage(url : String) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.space)
+        .placeholder(R.drawable.empty)
         .centerCrop()
         .into(this)
 }

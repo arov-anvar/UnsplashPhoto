@@ -19,7 +19,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/space" />
+            android:src="@drawable/empty" />
 
         <TextView
             android:id="@+id/collectionNameTxt"
