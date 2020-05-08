@@ -9,14 +9,15 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.unsplashphoto.R
+import com.example.unsplashphoto.data.search.Result
 import com.example.unsplashphoto.ui.loadImage
 import com.example.unsplashphoto.ui.search.Photo
 
 class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 
-    private var photos = mutableListOf<Photo>()
+    private var photos = mutableListOf<Result>()
 
-    fun setPhotos(photos: List<Photo>) {
+    fun setPhotos(photos: List<Result>) {
         this.photos.clear()
         this.photos.addAll(photos)
         notifyDataSetChanged()
@@ -25,11 +26,11 @@ class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
     inner class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val photoImageView: ImageView = itemView.findViewById(R.id.imageViewPhoto)
 
-        fun bind(photo: Photo) {
-            photoImageView.loadImage(photo.photoUrl)
+        fun bind(photo: Result) {
+            photoImageView.loadImage(photo.urls.full)
 
             photoImageView.setOnClickListener {
-                val args = bundleOf("urlPhoto" to photo.photoUrl)
+                val args = bundleOf("photoId" to photo.id)
                 itemView.findNavController().navigate(R.id.photoFragment, args)
             }
         }

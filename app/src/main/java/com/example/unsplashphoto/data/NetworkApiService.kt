@@ -2,6 +2,7 @@ package com.example.unsplashphoto.data
 
 import com.example.unsplashphoto.BuildConfig
 import com.example.unsplashphoto.data.collections.GalleryResp
+import com.example.unsplashphoto.data.photo.Photo
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.search.SearchResp
@@ -77,4 +78,9 @@ interface NetworkApiService {
         @Query("page") page: Int,
         @Query("query") query: String
     ): Deferred<SearchResp>
+
+    @GET("/photos/{id}")
+    fun getPhotoAsync(
+        @Path("id") id: String
+    ): Deferred<Photo>
 }

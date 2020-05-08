@@ -3,6 +3,7 @@ package com.example.unsplashphoto.data.repository
 import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.NetworkApiService
 import com.example.unsplashphoto.data.collections.GalleryResp
+import com.example.unsplashphoto.data.photo.Photo
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.search.SearchResp
@@ -26,5 +27,9 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Network
 
     override suspend fun searchPhotoAsync(query: String, page: Int): SearchResp =
         apiService.searchPhotoAsync(page, query).await()
+
+    override suspend fun getPhotoByIdAsync(id: String): Photo =
+        apiService.getPhotoAsync(id).await()
+
 
 }

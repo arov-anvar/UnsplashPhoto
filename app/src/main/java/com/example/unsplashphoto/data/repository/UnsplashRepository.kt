@@ -1,6 +1,7 @@
 package com.example.unsplashphoto.data.repository
 
 import com.example.unsplashphoto.data.collections.GalleryResp
+import com.example.unsplashphoto.data.photo.Photo
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.search.SearchResp
@@ -11,5 +12,6 @@ interface UnsplashRepository {
     suspend fun getCollectionsAsync(page: Int, perPage: Int): List<GalleryResp>
     suspend fun getMostPopularPicture(): List<DailyResp>
     suspend fun searchPhotoAsync(query: String, page: Int): SearchResp
+    suspend fun getPhotoByIdAsync(id: String): Photo
 
 }

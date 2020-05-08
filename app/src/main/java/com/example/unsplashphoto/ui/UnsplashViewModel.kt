@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.unsplashphoto.AppDelegate
 import com.example.unsplashphoto.data.collections.GalleryResp
+import com.example.unsplashphoto.data.photo.Photo
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.popular.DailyResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
@@ -62,6 +63,16 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
 
         return searchLive
+    }
+
+    fun getPhoto(id: String): MutableLiveData<Photo> {
+        val photoLive = MutableLiveData<Photo>()
+        viewModelScope.launch {
+            val photo = repository.getPhotoByIdAsync(id)
+            photoLive.value = photo
+        }
+
+        return photoLive
     }
 
 

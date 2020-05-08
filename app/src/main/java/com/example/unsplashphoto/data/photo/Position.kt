@@ -4,6 +4,8 @@ package com.example.unsplashphoto.data.photo
 import com.google.gson.annotations.SerializedName
 
 data class Position(
-    val latitude: Any,
-    val longitude: Any
+    @SerializedName("latitude")
+    val latitude: Double,
+    @SerializedName("longitude")
+    val longitude: Double
 )

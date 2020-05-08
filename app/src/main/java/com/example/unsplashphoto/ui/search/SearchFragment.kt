@@ -57,7 +57,7 @@ class SearchFragment : Fragment() {
                 Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
                 viewModel.fetchPhotosByQuery(query.toString(), 1).observe(this@SearchFragment, Observer {
                     if(it.results.isNotEmpty()) {
-                        photoAdapter.setPhotos(it.results.mapToPhotos())
+                        photoAdapter.setPhotos(it.results)
                         resultsRecycler.visibility = View.VISIBLE
                         progressBarSearch.visibility = View.GONE
                         txtMessage.visibility = View.GONE
