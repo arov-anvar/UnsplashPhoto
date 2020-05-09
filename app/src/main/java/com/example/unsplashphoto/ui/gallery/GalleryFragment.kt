@@ -8,12 +8,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
 import com.example.unsplashphoto.ui.gallery.adapter.GalleryAdapter
-import com.example.unsplashphoto.ui.mapToGalleryItem
+import com.example.unsplashphoto.mapToGalleryItem
 import kotlinx.android.synthetic.main.gallery_fragment.*
 
 class GalleryFragment : Fragment() {

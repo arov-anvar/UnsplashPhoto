@@ -8,10 +8,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.unsplashphoto.MainActivity
+import com.example.unsplashphoto.ui.MainActivity
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
-import com.example.unsplashphoto.ui.mapToPhotos
 import com.example.unsplashphoto.ui.search.adapter.PhotoAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
 

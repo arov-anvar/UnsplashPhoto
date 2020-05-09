@@ -10,11 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.unsplashphoto.MainActivity
+import com.example.unsplashphoto.ui.MainActivity
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
-import com.example.unsplashphoto.ui.mapToCollectionItems
+import com.example.unsplashphoto.mapToCollectionItems
 import kotlinx.android.synthetic.main.current_collection_fragment.*
 
 class CurrentCollectionFragment : Fragment() {

@@ -8,8 +8,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
-import com.example.unsplashphoto.data.search.Result
-import com.example.unsplashphoto.ui.loadImage
+import com.example.unsplashphoto.data.model.search.Result
+import com.example.unsplashphoto.loadImage
 
 class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
 

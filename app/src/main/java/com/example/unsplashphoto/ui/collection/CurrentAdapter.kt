@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.unsplashphoto.R
-import com.example.unsplashphoto.ui.loadImage
-import de.hdodenhof.circleimageview.CircleImageView
+import com.example.unsplashphoto.loadImage
 
 class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() {
     private val currentItems = mutableListOf<CurrentItem>()

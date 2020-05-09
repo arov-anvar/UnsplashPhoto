@@ -1,19 +1,19 @@
 package com.example.unsplashphoto.data.repository
 
-import com.example.unsplashphoto.AppDelegate
+import com.example.unsplashphoto.UnsplashPhotoApp
 import com.example.unsplashphoto.data.NetworkApiService
-import com.example.unsplashphoto.data.collections.GalleryResp
-import com.example.unsplashphoto.data.photo.Photo
-import com.example.unsplashphoto.data.photos.PhotoResp
-import com.example.unsplashphoto.data.popular.DailyResp
-import com.example.unsplashphoto.data.search.SearchResp
+import com.example.unsplashphoto.data.model.collections.GalleryResp
+import com.example.unsplashphoto.data.model.photo.Photo
+import com.example.unsplashphoto.data.model.photos.PhotoResp
+import com.example.unsplashphoto.data.model.popular.DailyResp
+import com.example.unsplashphoto.data.model.search.SearchResp
 import javax.inject.Inject
 
 class UnsplashRepositoryImpl @Inject constructor(private val apiService: NetworkApiService) :
     UnsplashRepository {
 
     init {
-        AppDelegate.appComponent.inject(this)
+        UnsplashPhotoApp.appComponent.inject(this)
     }
 
     override suspend fun getCollectionByIdAsync(id: Int, page: Int, perPage: Int): List<PhotoResp> =

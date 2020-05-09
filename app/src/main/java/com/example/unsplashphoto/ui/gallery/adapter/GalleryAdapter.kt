@@ -1,7 +1,6 @@
 package com.example.unsplashphoto.ui.gallery.adapter
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
-import com.example.unsplashphoto.ui.loadImage
+import com.example.unsplashphoto.loadImage
 
 
 class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder>() {

@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
-import com.example.unsplashphoto.ui.loadImage
+import com.example.unsplashphoto.loadImage
 import kotlinx.android.synthetic.main.photo_fragment.*
 
 class PhotoFragment: Fragment() {

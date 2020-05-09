@@ -1,11 +1,11 @@
 package com.example.unsplashphoto.data
 
 import com.example.unsplashphoto.BuildConfig
-import com.example.unsplashphoto.data.collections.GalleryResp
-import com.example.unsplashphoto.data.photo.Photo
-import com.example.unsplashphoto.data.photos.PhotoResp
-import com.example.unsplashphoto.data.popular.DailyResp
-import com.example.unsplashphoto.data.search.SearchResp
+import com.example.unsplashphoto.data.model.collections.GalleryResp
+import com.example.unsplashphoto.data.model.photo.Photo
+import com.example.unsplashphoto.data.model.photos.PhotoResp
+import com.example.unsplashphoto.data.model.popular.DailyResp
+import com.example.unsplashphoto.data.model.search.SearchResp
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor

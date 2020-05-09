@@ -4,13 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.unsplashphoto.AppDelegate
-import com.example.unsplashphoto.data.collections.GalleryResp
-import com.example.unsplashphoto.data.photo.Photo
-import com.example.unsplashphoto.data.photos.PhotoResp
-import com.example.unsplashphoto.data.popular.DailyResp
+import com.example.unsplashphoto.UnsplashPhotoApp
+import com.example.unsplashphoto.data.model.collections.GalleryResp
+import com.example.unsplashphoto.data.model.photo.Photo
+import com.example.unsplashphoto.data.model.photos.PhotoResp
+import com.example.unsplashphoto.data.model.popular.DailyResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
-import com.example.unsplashphoto.data.search.SearchResp
+import com.example.unsplashphoto.data.model.search.SearchResp
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
     lateinit var repository: UnsplashRepositoryImpl
 
     init {
-        AppDelegate.appComponent.inject(this)
+        UnsplashPhotoApp.appComponent.inject(this)
     }
 
     fun getCollection(id: Int, page: Int, perPage: Int): MutableLiveData<List<PhotoResp>> {
