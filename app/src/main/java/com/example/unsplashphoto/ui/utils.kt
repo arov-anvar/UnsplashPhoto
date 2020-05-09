@@ -6,10 +6,9 @@ import com.example.unsplashphoto.R
 import com.example.unsplashphoto.data.collections.GalleryResp
 import com.example.unsplashphoto.data.photos.PhotoResp
 import com.example.unsplashphoto.data.search.Result
-import com.example.unsplashphoto.data.search.SearchResp
 import com.example.unsplashphoto.ui.collection.CurrentItem
 import com.example.unsplashphoto.ui.gallery.adapter.Collection
-import com.example.unsplashphoto.ui.search.Photo
+import com.example.unsplashphoto.ui.search.adapter.Photo
 
 fun ImageView.loadImage(url : String) {
     Glide.with(this)
