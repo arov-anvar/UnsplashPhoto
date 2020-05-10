@@ -49,4 +49,11 @@
             <argument android:name="photoUrl" app:argType="string"/>
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.unsplashphoto.ui.user.UserFragment"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment">
+
+    </fragment>
 </navigation>

@@ -29,37 +29,67 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/search" />
 
-    <TextView
-        android:id="@+id/followersCountTxt"
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/followersTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
         android:textColor="@color/colorBlack"
         app:layout_constraintTop_toTopOf="@+id/pictureUserImg"
         app:layout_constraintStart_toEndOf="@+id/pictureUserImg"
-        app:layout_constraintEnd_toStartOf="@id/followingCountTxt"
-        tools:text="100"/>
+        app:layout_constraintEnd_toStartOf="@id/followingTxt"
+        tools:countText="800"
+        tools:titleText="followers"/>
 
-    <TextView
-        android:id="@+id/followingCountTxt"
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/followingTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
         android:textColor="@color/colorBlack"
-        app:layout_constraintStart_toEndOf="@+id/followersCountTxt"
-        app:layout_constraintTop_toTopOf="@id/followersCountTxt"
-        app:layout_constraintEnd_toEndOf="@+id/downloadsCountTxt"
-        tools:text="100"/>
+        app:layout_constraintStart_toEndOf="@+id/followersTxt"
+        app:layout_constraintTop_toTopOf="@id/followersTxt"
+        app:layout_constraintEnd_toEndOf="@+id/downloadsTxt"
+        tools:countText="800"
+        tools:titleText="followers"/>
 
-    <TextView
-        android:id="@+id/downloadsCountTxt"
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/downloadsTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
         android:textColor="@color/colorBlack"
-        app:layout_constraintTop_toTopOf="@id/followingCountTxt"
-        app:layout_constraintStart_toEndOf="@id/followingCountTxt"
+        app:layout_constraintTop_toTopOf="@id/followingTxt"
+        app:layout_constraintStart_toEndOf="@id/followingTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="100"/>
+        tools:countText="800"
+        tools:titleText="followers"/>
 
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/totalLikesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/pictureUserImg"
+        app:layout_constraintBottom_toBottomOf="@id/pictureUserImg"
+        app:layout_constraintEnd_toStartOf="@id/totalPhotosTxt"
+        tools:countText="800"
+        tools:titleText="followers"/>
+
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/totalPhotosTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/totalLikesTxt"
+        app:layout_constraintStart_toEndOf="@+id/totalLikesTxt"
+        app:layout_constraintEnd_toStartOf="@id/totalCollectionsTxt"
+        tools:countText="800"
+        tools:titleText="followers"/>
+
+    <com.example.unsplashphoto.custom_view.CountView
+        android:id="@+id/totalCollectionsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/totalLikesTxt"
+        app:layout_constraintStart_toEndOf="@id/totalPhotosTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:countText="800"
+        tools:titleText="followers"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
