@@ -10,6 +10,10 @@
         android:name="com.example.unsplashphoto.ui.daily.DailyPictureFragment"
         android:label="daily_picture_fragment"
         tools:layout="@layout/daily_picture_fragment" >
+        <action
+            android:id="@+id/action_dailyPictureFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+            <argument android:name="userName"/>
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"

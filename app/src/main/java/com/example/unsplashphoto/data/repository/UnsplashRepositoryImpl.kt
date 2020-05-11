@@ -7,6 +7,7 @@ import com.example.unsplashphoto.data.model.photo.Photo
 import com.example.unsplashphoto.data.model.photos.PhotoResp
 import com.example.unsplashphoto.data.model.popular.DailyResp
 import com.example.unsplashphoto.data.model.search.SearchResp
+import com.example.unsplashphoto.data.model.user.User
 import javax.inject.Inject
 
 class UnsplashRepositoryImpl @Inject constructor(private val apiService: NetworkApiService) :
@@ -30,6 +31,10 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Network
 
     override suspend fun getPhotoByIdAsync(id: String): Photo =
         apiService.getPhotoAsync(id).await()
+
+    override suspend fun getUserByAsync(userName: String): User =
+        apiService.getUserAsync(userName).await()
+
 
 
 }

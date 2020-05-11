@@ -11,6 +11,7 @@ import com.example.unsplashphoto.data.model.photos.PhotoResp
 import com.example.unsplashphoto.data.model.popular.DailyResp
 import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
 import com.example.unsplashphoto.data.model.search.SearchResp
+import com.example.unsplashphoto.data.model.user.User
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -73,6 +74,15 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
 
         return photoLive
+    }
+
+    fun getUser(userName: String): MutableLiveData<User> {
+        val userLive = MutableLiveData<User>()
+        viewModelScope.launch {
+            val user = repository.getUserByAsync(userName)
+            userLive.value = user
+        }
+        return userLive
     }
 
 

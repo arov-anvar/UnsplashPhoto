@@ -19,4 +19,8 @@ class CountView @JvmOverloads constructor(
         countTxt.text = countText.toString()
         titleTxt.text = titleText
     }
+
+    fun setCount(count: Int) {
+        countTxt.text = count.toString()
+    }
 }

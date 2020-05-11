@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
 import com.example.unsplashphoto.loadImage
@@ -33,6 +35,11 @@ class DailyPictureFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
         loadPictureDay()
+
+        authorImageView.setOnClickListener {
+            val args = bundleOf("userName" to authorFullNameTextView.text)
+            it.findNavController().navigate(R.id.userFragment, args)
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -44,7 +51,7 @@ class DailyPictureFragment : Fragment() {
             authorImageView.loadImage(it.user.profileImage.large)
             countLikesTextView.text = it.likes.toString()
             permissionPictureTextView.text = "${it.height}x${it.width}px"
-            authorFullNameTextView.text = it.user.firstName
+            authorFullNameTextView.text = it.user.username
             authorInstagramNameTextView.text = "@${it.user.instagramUsername}"
         })
     }

@@ -6,6 +6,7 @@ import com.example.unsplashphoto.data.model.photo.Photo
 import com.example.unsplashphoto.data.model.photos.PhotoResp
 import com.example.unsplashphoto.data.model.popular.DailyResp
 import com.example.unsplashphoto.data.model.search.SearchResp
+import com.example.unsplashphoto.data.model.user.User
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -83,4 +84,9 @@ interface NetworkApiService {
     fun getPhotoAsync(
         @Path("id") id: String
     ): Deferred<Photo>
+
+    @GET("users/{username}")
+    fun getUserAsync(
+        @Path("username") userName: String
+    ): Deferred<User>
 }
