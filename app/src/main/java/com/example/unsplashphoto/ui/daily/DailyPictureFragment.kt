@@ -40,19 +40,26 @@ class DailyPictureFragment : Fragment() {
             val args = bundleOf("userName" to authorFullNameTextView.text)
             it.findNavController().navigate(R.id.userFragment, args)
         }
+
+
     }
 
     @SuppressLint("SetTextI18n")
     private fun loadPictureDay() {
-        viewModel.getPictureDay().observe(viewLifecycleOwner, Observer {
+        viewModel.getPictureDay().observe(viewLifecycleOwner, Observer {dailyPicture ->
             progressBar.visibility = View.GONE
             mainContentConstraintLayout.visibility = View.VISIBLE
-            dailyPictureImageView.loadImage(it.urls.regular)
-            authorImageView.loadImage(it.user.profileImage.large)
-            countLikesTextView.text = it.likes.toString()
-            permissionPictureTextView.text = "${it.height}x${it.width}px"
-            authorFullNameTextView.text = it.user.username
-            authorInstagramNameTextView.text = "@${it.user.instagramUsername}"
+            dailyPictureImageView.loadImage(dailyPicture.urls.regular)
+            authorImageView.loadImage(dailyPicture.user.profileImage.large)
+            countLikesTextView.text = dailyPicture.likes.toString()
+            permissionPictureTextView.text = "${dailyPicture.height}x${dailyPicture.width}px"
+            authorFullNameTextView.text = dailyPicture.user.username
+            authorInstagramNameTextView.text = "@${dailyPicture.user.instagramUsername}"
+
+            dailyPictureImageView.setOnClickListener {
+                val args = bundleOf("photoId" to dailyPicture.id)
+                it.findNavController().navigate(R.id.photoFragment, args)
+            }
         })
     }
 

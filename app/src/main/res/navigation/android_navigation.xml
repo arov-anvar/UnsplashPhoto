@@ -14,6 +14,10 @@
             android:id="@+id/action_dailyPictureFragment_to_userFragment"
             app:destination="@id/userFragment" />
             <argument android:name="userName"/>
+        <action
+            android:id="@+id/action_dailyPictureFragment_to_photoFragment"
+            app:destination="@id/photoFragment" />
+            <argument android:name="photoId"/>
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
