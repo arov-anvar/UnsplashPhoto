@@ -7,4 +7,6 @@
     <string name="search">Поиск</string>
     <string name="ten_photo">10 Фотографий</string>
     <string name="photo">Photo</string>
+    <string name="photo_day">Фото дня</string>
+    <string name="gallery">Галерея</string>
 </resources>

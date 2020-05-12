@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,34 +8,35 @@
 
 
     <ProgressBar
-        android:layout_gravity="center"
         android:id="@+id/progressBarSearch"
         android:layout_width="45dp"
-        android:visibility="gone"
-        android:layout_height="45dp"/>
-
-    <TextView
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:text="@string/search"
-        android:textAlignment="center"
-        android:visibility="gone"
-        android:id="@+id/txtMessage"
+        android:layout_height="45dp"
         android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/searchPictureImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_search_foreground"
+        android:textAlignment="center"
+        android:visibility="gone" />
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
+        android:theme="@style/AppTheme.Toolbar"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorBlack"
+        app:subtitleTextColor="@color/colorWhite"
+        app:titleTextColor="@color/colorWhite" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/resultsRecycler"

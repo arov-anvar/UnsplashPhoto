@@ -3,6 +3,7 @@ package com.example.unsplashphoto.ui.search
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,9 +20,6 @@ class SearchFragment : Fragment() {
     private lateinit var viewModel: UnsplashViewModel
     private lateinit var searchView: androidx.appcompat.widget.SearchView
     private val photoAdapter = PhotoAdapter()
-
-    private var isLoading = false
-    private var isLastPage = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +42,13 @@ class SearchFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
-        txtMessage.visibility = View.VISIBLE
+        searchPictureImg.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.search_picture_menu, menu)
         searchView = menu.findItem(R.id.search_action).actionView as androidx.appcompat.widget.SearchView
+        searchView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorWhite))
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 progressBarSearch.visibility = View.VISIBLE
@@ -59,10 +58,10 @@ class SearchFragment : Fragment() {
                         photoAdapter.setPhotos(it.results)
                         resultsRecycler.visibility = View.VISIBLE
                         progressBarSearch.visibility = View.GONE
-                        txtMessage.visibility = View.GONE
+                        searchPictureImg.visibility = View.GONE
                     } else {
                         resultsRecycler.visibility = View.GONE
-                        txtMessage.visibility = View.VISIBLE
+                        searchPictureImg.visibility = View.VISIBLE
                         progressBarSearch.visibility = View.GONE
                     }
                 })
@@ -82,13 +81,6 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
-
-        resultsRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-
-                super.onScrollStateChanged(recyclerView, newState)
-            }
-        })
     }
 
 
