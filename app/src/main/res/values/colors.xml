@@ -8,5 +8,6 @@
     <color name="colorGreen">#4CAF50</color>
     <color name="colorGrey">#30B09A</color>
     <color name="colorSelected">#E90000</color>
+    <color name="colorRed">#FF0000</color>
 
 </resources>

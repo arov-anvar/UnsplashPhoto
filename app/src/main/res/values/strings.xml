@@ -9,4 +9,5 @@
     <string name="photo">Photo</string>
     <string name="photo_day">Фото дня</string>
     <string name="gallery">Галерея</string>
+    <string name="download">скачать</string>
 </resources>
