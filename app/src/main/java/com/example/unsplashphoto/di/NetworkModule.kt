@@ -1,6 +1,6 @@
 package com.example.unsplashphoto.di
 
-import com.example.unsplashphoto.data.NetworkApiService
+import com.example.unsplashphoto.model.UnsplashApiService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -10,5 +10,5 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideUnsplashApiService() = NetworkApiService()
+    fun provideUnsplashApiService() = UnsplashApiService()
 }

@@ -17,11 +17,6 @@ import kotlinx.android.synthetic.main.daily_picture_fragment.*
 
 class DailyPictureFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            DailyPictureFragment()
-    }
-
     private lateinit var viewModel: UnsplashViewModel
 
     override fun onCreateView(
@@ -40,8 +35,6 @@ class DailyPictureFragment : Fragment() {
             val args = bundleOf("userName" to authorFullNameTextView.text)
             it.findNavController().navigate(R.id.userFragment, args)
         }
-
-
     }
 
     @SuppressLint("SetTextI18n")

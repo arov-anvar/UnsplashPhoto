@@ -9,15 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.unsplashphoto.ui.MainActivity
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
 import com.example.unsplashphoto.mapToCollectionItems
+import com.example.unsplashphoto.ui.collection.adapter.CurrentAdapter
 import kotlinx.android.synthetic.main.current_collection_fragment.*
 
 class CurrentCollectionFragment : Fragment() {
-    private val currentAdapter = CurrentAdapter()
+    private val currentAdapter =
+        CurrentAdapter()
     private lateinit var viewModel : UnsplashViewModel
 
     override fun onCreateView(
@@ -32,24 +32,17 @@ class CurrentCollectionFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
-        currentAdapter.setListener(activity as MainActivity)
 
         with(imageRecycler) {
             adapter = currentAdapter
             layoutManager = LinearLayoutManager(context)
         }
 
-        val id = arguments!!.getInt("id")
+        val id = arguments?.getInt("id", 0) ?: 0
         viewModel.getCollection(id, 1, 30).observe(this, Observer {
             currentProgressBar.visibility = View.GONE
             imageRecycler.visibility = View.VISIBLE
             currentAdapter.setItems(it.mapToCollectionItems())
-        })
-
-        imageRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-            }
         })
     }
 

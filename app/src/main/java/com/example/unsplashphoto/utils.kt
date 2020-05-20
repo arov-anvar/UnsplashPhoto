@@ -10,12 +10,10 @@ import android.provider.MediaStore
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.unsplashphoto.data.model.collections.GalleryResp
-import com.example.unsplashphoto.data.model.photos.PhotoResp
-import com.example.unsplashphoto.data.model.search.Result
-import com.example.unsplashphoto.ui.collection.CurrentItem
+import com.example.unsplashphoto.model.entity.collections.GalleryResp
+import com.example.unsplashphoto.model.entity.photos.PhotoResp
+import com.example.unsplashphoto.ui.collection.adapter.CurrentItem
 import com.example.unsplashphoto.ui.gallery.adapter.Collection
-import com.example.unsplashphoto.ui.search.adapter.Photo
 import java.io.File
 import java.io.IOException
 
@@ -54,7 +52,8 @@ fun List<PhotoResp>.mapToCollectionItems(): MutableList<CurrentItem> {
             CurrentItem(
                 id = it.id,
                 photoUrl = it.urls.regular
-            ))
+            )
+        )
     }
 
     return result

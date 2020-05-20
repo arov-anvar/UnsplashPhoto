@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/search" />
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/followersTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         app:titleText="followers"
         tools:countText="800"/>
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/followingTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         app:titleText="following"
         tools:countText="800"/>
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/downloadsTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         app:titleText="downloads"
         tools:countText="800"/>
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/totalLikesTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         app:titleText="likes"
         tools:countText="800"/>
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/totalPhotosTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
         app:titleText="photos"
         tools:countText="800"/>
 
-    <com.example.unsplashphoto.custom_view.CountView
+    <com.example.unsplashphoto.ui.custom_view.CountView
         android:id="@+id/totalCollectionsTxt"
         android:layout_width="90dp"
         android:layout_height="wrap_content"

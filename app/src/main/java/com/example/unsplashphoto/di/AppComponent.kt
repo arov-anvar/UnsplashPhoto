@@ -1,9 +1,8 @@
 package com.example.unsplashphoto.di
 
 import com.example.unsplashphoto.UnsplashPhotoApp
-import com.example.unsplashphoto.data.repository.UnsplashRepository
+import com.example.unsplashphoto.model.repository.UnsplashRepository
 import com.example.unsplashphoto.ui.UnsplashViewModel
-import com.example.unsplashphoto.ui.gallery.GalleryFragment
 import dagger.Component
 import javax.inject.Singleton
 

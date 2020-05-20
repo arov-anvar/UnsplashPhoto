@@ -35,7 +35,7 @@ class UserFragment: Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
 
-        val userName = arguments!!.getString("userName")
+        val userName = arguments?.getString("userName")
 
         userName?.apply {
             viewModel.getUser(this).observe(this@UserFragment, Observer {user ->

@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.search_fragment.*
 
 
 class SearchFragment : Fragment() {
+
     private lateinit var viewModel: UnsplashViewModel
     private lateinit var searchView: androidx.appcompat.widget.SearchView
     private val photoAdapter = PhotoAdapter()
@@ -48,21 +49,18 @@ class SearchFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.search_picture_menu, menu)
         searchView = menu.findItem(R.id.search_action).actionView as androidx.appcompat.widget.SearchView
-        searchView.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorWhite))
+        searchView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
         searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 progressBarSearch.visibility = View.VISIBLE
                 Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
                 viewModel.fetchPhotosByQuery(query.toString(), 1).observe(this@SearchFragment, Observer {
-                    if(it.results.isNotEmpty()) {
+                    progressBarSearch.visibility = View.GONE
+                    if (it.results.isNotEmpty()) {
                         photoAdapter.setPhotos(it.results)
-                        resultsRecycler.visibility = View.VISIBLE
-                        progressBarSearch.visibility = View.GONE
-                        searchPictureImg.visibility = View.GONE
+                        showResultSearch(View.VISIBLE, View.GONE)
                     } else {
-                        resultsRecycler.visibility = View.GONE
-                        searchPictureImg.visibility = View.VISIBLE
-                        progressBarSearch.visibility = View.GONE
+                        showResultSearch(View.GONE, View.VISIBLE)
                     }
                 })
                 return true
@@ -77,6 +75,10 @@ class SearchFragment : Fragment() {
 
     }
 
+    private fun showResultSearch(recyclerView: Int, searchPictureView: Int) {
+        resultsRecycler.visibility = recyclerView
+        searchPictureImg.visibility = searchPictureView
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

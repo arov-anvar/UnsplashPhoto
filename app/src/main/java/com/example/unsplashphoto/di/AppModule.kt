@@ -1,8 +1,7 @@
 package com.example.unsplashphoto.di
 
-import android.app.Application
-import com.example.unsplashphoto.data.NetworkApiService
-import com.example.unsplashphoto.data.repository.UnsplashRepositoryImpl
+import com.example.unsplashphoto.model.UnsplashApiService
+import com.example.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,6 +11,6 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideUnsplashRepository() = UnsplashRepositoryImpl(apiService = NetworkApiService.invoke())
+    fun provideUnsplashRepository() = UnsplashRepositoryImpl(apiService = UnsplashApiService.invoke())
 
 }

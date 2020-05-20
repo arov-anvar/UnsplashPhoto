@@ -36,9 +36,9 @@ class PhotoFragment: Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
-        val photoId = arguments!!.getString("photoId")
-        if (photoId != null) {
-            viewModel.getPhoto(photoId).observe(this@PhotoFragment, Observer {photo ->
+        val photoId = arguments?.getString("photoId")
+        photoId?.apply {
+            viewModel.getPhoto(this).observe(this@PhotoFragment, Observer {photo ->
                 urlPhoto = photo.urls.small
                 fullPhotoImageView.loadImage(photo.urls.full)
                 countLikesTxt.text = "${photo.likes}"

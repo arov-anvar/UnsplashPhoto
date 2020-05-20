@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.gallery_fragment.*
 class GalleryFragment : Fragment() {
 
     private val galleryAdapter = GalleryAdapter()
-
     private lateinit var viewModel: UnsplashViewModel
 
     override fun onCreateView(
