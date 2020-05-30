@@ -2,13 +2,18 @@ package com.example.unsplashphoto
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Environment
+import android.provider.CalendarContract
 import android.provider.MediaStore
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
 import com.example.unsplashphoto.model.entity.collections.GalleryResp
 import com.example.unsplashphoto.model.entity.photos.PhotoResp
@@ -16,6 +21,7 @@ import com.example.unsplashphoto.ui.collection.adapter.CurrentItem
 import com.example.unsplashphoto.ui.gallery.adapter.Collection
 import java.io.File
 import java.io.IOException
+
 
 fun showToast(context: Context, str: String) {
     Toast.makeText(context, str, Toast.LENGTH_SHORT).show()

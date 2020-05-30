@@ -2,8 +2,10 @@ package com.example.unsplashphoto.ui.search
 
 import android.os.Bundle
 import android.view.*
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -83,6 +85,19 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
+
+        selectTypeSearch.setOnCheckedChangeListener { group, checkedId ->
+            for (index in 1..group.childCount) {
+                val btn = group.getChildAt(index - 1) as RadioButton
+                if (!btn.isChecked) {
+                    DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorWhite))
+                    btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+                } else {
+                    DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorRed))
+                    btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
+                }
+            }
+        }
     }
 
 
