@@ -6,7 +6,8 @@ import com.example.unsplashphoto.model.entity.collections.GalleryResp
 import com.example.unsplashphoto.model.entity.photo.Photo
 import com.example.unsplashphoto.model.entity.photos.PhotoResp
 import com.example.unsplashphoto.model.entity.popular.DailyResp
-import com.example.unsplashphoto.model.entity.search.SearchResp
+import com.example.unsplashphoto.model.entity.search.collection.SearchCollectionResp
+import com.example.unsplashphoto.model.entity.search.photo.SearchPhotoResp
 import com.example.unsplashphoto.model.entity.user.User
 import javax.inject.Inject
 
@@ -26,8 +27,12 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Unsplas
     override suspend fun getMostPopularPicture(): List<DailyResp> =
         apiService.getMostPopularPictureAsync().await()
 
-    override suspend fun searchPhotoAsync(query: String, page: Int): SearchResp =
+    override suspend fun searchPhotoAsync(query: String, page: Int): SearchPhotoResp =
         apiService.searchPhotoAsync(page, query).await()
+
+    override suspend fun searchCollectionAsync(query: String, page: Int): SearchCollectionResp =
+        apiService.searchCollectionsAsync(page, query).await()
+
 
     override suspend fun getPhotoByIdAsync(id: String): Photo =
         apiService.getPhotoAsync(id).await()

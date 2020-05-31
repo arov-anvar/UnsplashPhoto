@@ -1,4 +1,4 @@
-package com.example.unsplashphoto.model.entity.search
+package com.example.unsplashphoto.model.entity.search.photo
 
 
 import com.google.gson.annotations.SerializedName

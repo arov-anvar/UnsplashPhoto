@@ -28,11 +28,19 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.PhotoViewHolder>() {
             photoImageView.loadImage(search.urlPhoto)
 
             photoImageView.setOnClickListener {
-                val args = bundleOf("photoId" to search.id)
                 when (search.typeSearch) {
-                    1 -> itemView.findNavController().navigate(R.id.photoFragment, args)
-                    2 -> itemView.findNavController().navigate(R.id.photoFragment, args)
-                    3 -> itemView.findNavController().navigate(R.id.photoFragment, args)
+                    1 -> {
+                        val args = bundleOf("photoId" to search.id)
+                        itemView.findNavController().navigate(R.id.photoFragment, args)
+                    }
+                    2 -> {
+                        val args = bundleOf("id" to search.id.toInt())
+                        itemView.findNavController().navigate(R.id.currentCollectionFragment, args)
+                    }
+                    3 -> {
+                        val args = bundleOf("photoId" to search.id)
+                        itemView.findNavController().navigate(R.id.photoFragment, args)
+                    }
                 }
 
             }

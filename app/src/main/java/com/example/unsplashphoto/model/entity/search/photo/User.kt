@@ -1,6 +1,8 @@
-package com.example.unsplashphoto.model.entity.search
+package com.example.unsplashphoto.model.entity.search.photo
 
 
+import com.example.unsplashphoto.model.entity.search.photo.LinksX
+import com.example.unsplashphoto.model.entity.search.photo.ProfileImage
 import com.google.gson.annotations.SerializedName
 
 data class User(

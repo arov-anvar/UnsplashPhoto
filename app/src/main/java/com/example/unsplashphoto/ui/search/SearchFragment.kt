@@ -65,16 +65,6 @@ class SearchFragment : Fragment() {
                         showResultSearch(View.GONE, View.VISIBLE)
                     }
                 })
-
-//                viewModel.fetchPhotosByQuery(query.toString(), 1).observe(this@SearchFragment, Observer {
-//                    progressBarSearch.visibility = View.GONE
-//                    if (it.results.isNotEmpty()) {
-//                        photoAdapter.setData(it.results)
-//                        showResultSearch(View.VISIBLE, View.GONE)
-//                    } else {
-//                        showResultSearch(View.GONE, View.VISIBLE)
-//                    }
-//                })
                 return true
             }
 

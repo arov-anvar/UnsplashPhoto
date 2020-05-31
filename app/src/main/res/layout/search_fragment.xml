@@ -79,7 +79,14 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/collection_foreground"/>
+            android:drawableTop="@drawable/photo_foreground"/>
+
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/collection_foreground" />
 
         <RadioButton
             android:layout_width="0dp"
@@ -87,13 +94,6 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/user_foreground" />
-
-        <RadioButton
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawableTop="@drawable/photo_foreground" />
     </RadioGroup>
 
     <View
