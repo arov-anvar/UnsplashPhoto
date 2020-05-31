@@ -10,11 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.ui.MainActivity
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.ui.UnsplashViewModel
-import com.example.unsplashphoto.ui.search.adapter.PhotoAdapter
+import com.example.unsplashphoto.ui.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
 
 
@@ -22,7 +21,8 @@ class SearchFragment : Fragment() {
 
     private lateinit var viewModel: UnsplashViewModel
     private lateinit var searchView: androidx.appcompat.widget.SearchView
-    private val photoAdapter = PhotoAdapter()
+    private val photoAdapter = SearchAdapter()
+    private var typeSearch: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,15 +56,25 @@ class SearchFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 progressBarSearch.visibility = View.VISIBLE
                 Toast.makeText(context, "Query: $query", Toast.LENGTH_SHORT).show()
-                viewModel.fetchPhotosByQuery(query.toString(), 1).observe(this@SearchFragment, Observer {
+                viewModel.search(typeSearch, query.toString(), 1).observe(this@SearchFragment, Observer {
                     progressBarSearch.visibility = View.GONE
-                    if (it.results.isNotEmpty()) {
-                        photoAdapter.setPhotos(it.results)
+                    if (it.isNotEmpty()) {
+                        photoAdapter.setData(it)
                         showResultSearch(View.VISIBLE, View.GONE)
                     } else {
                         showResultSearch(View.GONE, View.VISIBLE)
                     }
                 })
+
+//                viewModel.fetchPhotosByQuery(query.toString(), 1).observe(this@SearchFragment, Observer {
+//                    progressBarSearch.visibility = View.GONE
+//                    if (it.results.isNotEmpty()) {
+//                        photoAdapter.setData(it.results)
+//                        showResultSearch(View.VISIBLE, View.GONE)
+//                    } else {
+//                        showResultSearch(View.GONE, View.VISIBLE)
+//                    }
+//                })
                 return true
             }
 
@@ -87,16 +97,20 @@ class SearchFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
 
         selectTypeSearch.setOnCheckedChangeListener { group, checkedId ->
+            typeSearch = checkedId
             for (index in 1..group.childCount) {
-                val btn = group.getChildAt(index - 1) as RadioButton
-                if (!btn.isChecked) {
-                    DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorWhite))
-                    btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
-                } else {
-                    DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorRed))
-                    btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
-                }
+                changeStateButton(group.getChildAt(index - 1) as RadioButton)
             }
+        }
+    }
+
+    private fun changeStateButton(btn: RadioButton) {
+        if (!btn.isChecked) {
+            DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorWhite))
+            btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorBlack))
+        } else {
+            DrawableCompat.setTint(btn.compoundDrawables[1], ContextCompat.getColor(requireContext(), R.color.colorRed))
+            btn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.colorWhite))
         }
     }
 

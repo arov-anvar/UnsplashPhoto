@@ -8,28 +8,33 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
-import com.example.unsplashphoto.model.entity.search.Result
 import com.example.unsplashphoto.loadImage
+import com.example.unsplashphoto.model.entity.search.Search
 
-class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
+class SearchAdapter: RecyclerView.Adapter<SearchAdapter.PhotoViewHolder>() {
 
-    private var photos = mutableListOf<Result>()
+    private var data = mutableListOf<Search>()
 
-    fun setPhotos(photos: List<Result>) {
-        this.photos.clear()
-        this.photos.addAll(photos)
+    fun setData(photos: List<Search>) {
+        this.data.clear()
+        this.data.addAll(photos)
         notifyDataSetChanged()
     }
 
     inner class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val photoImageView: ImageView = itemView.findViewById(R.id.imageViewPhoto)
 
-        fun bind(photo: Result) {
-            photoImageView.loadImage(photo.urls.full)
+        fun bind(search: Search) {
+            photoImageView.loadImage(search.urlPhoto)
 
             photoImageView.setOnClickListener {
-                val args = bundleOf("photoId" to photo.id)
-                itemView.findNavController().navigate(R.id.photoFragment, args)
+                val args = bundleOf("photoId" to search.id)
+                when (search.typeSearch) {
+                    1 -> itemView.findNavController().navigate(R.id.photoFragment, args)
+                    2 -> itemView.findNavController().navigate(R.id.photoFragment, args)
+                    3 -> itemView.findNavController().navigate(R.id.photoFragment, args)
+                }
+
             }
         }
     }
@@ -39,10 +44,10 @@ class PhotoAdapter: RecyclerView.Adapter<PhotoAdapter.PhotoViewHolder>() {
         return PhotoViewHolder(photoView)
     }
 
-    override fun getItemCount() = photos.count()
+    override fun getItemCount() = data.count()
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val photo = photos[position]
-        holder.bind(photo)
+        val value = data[position]
+        holder.bind(value)
     }
 }

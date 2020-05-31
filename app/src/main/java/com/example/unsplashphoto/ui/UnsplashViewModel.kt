@@ -9,6 +9,7 @@ import com.example.unsplashphoto.model.entity.collections.GalleryResp
 import com.example.unsplashphoto.model.entity.photo.Photo
 import com.example.unsplashphoto.model.entity.photos.PhotoResp
 import com.example.unsplashphoto.model.entity.popular.DailyResp
+import com.example.unsplashphoto.model.entity.search.Search
 import com.example.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import com.example.unsplashphoto.model.entity.search.SearchResp
 import com.example.unsplashphoto.model.entity.user.User
@@ -20,6 +21,8 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
 
     @Inject
     lateinit var repository: UnsplashRepositoryImpl
+
+    private val PHOTO_SEARCH = 1
 
     init {
         UnsplashPhotoApp.appComponent.inject(this)
@@ -56,6 +59,7 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         return collectionLive
     }
 
+
     fun fetchPhotosByQuery(query: String, page: Int): MutableLiveData<SearchResp> {
         val searchLive = MutableLiveData<SearchResp>()
         viewModelScope.launch {
@@ -64,6 +68,26 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
 
         return searchLive
+    }
+
+    fun search(typeSearch: Int, query: String, page: Int): MutableLiveData<List<Search>>{
+        val searchLiveData = MutableLiveData<List<Search>>()
+        viewModelScope.launch {
+            when (typeSearch) {
+                1 -> searchLiveData.value = parseSearchPhoto(repository.searchPhotoAsync(query, page))
+                2 -> searchLiveData.value = parseSearchPhoto(repository.searchPhotoAsync(query, page))
+                3 -> searchLiveData.value = parseSearchPhoto(repository.searchPhotoAsync(query, page))
+            }
+        }
+        return searchLiveData
+    }
+
+    private fun parseSearchPhoto(data: SearchResp): List<Search> {
+        val listSearch = mutableListOf<Search>()
+        for (value in data.results) {
+            listSearch.add(Search(value.id, value.urls.full, PHOTO_SEARCH))
+        }
+        return listSearch
     }
 
     fun getPhoto(id: String): MutableLiveData<Photo> {
