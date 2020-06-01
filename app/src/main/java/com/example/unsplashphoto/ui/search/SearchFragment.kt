@@ -22,7 +22,7 @@ class SearchFragment : Fragment() {
     private lateinit var viewModel: UnsplashViewModel
     private lateinit var searchView: androidx.appcompat.widget.SearchView
     private val photoAdapter = SearchAdapter()
-    private var typeSearch: Int = 0
+    private var typeSearch: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
