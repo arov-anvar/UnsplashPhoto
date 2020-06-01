@@ -13,6 +13,7 @@ import com.example.unsplashphoto.model.entity.search.Search
 import com.example.unsplashphoto.model.entity.search.collection.SearchCollectionResp
 import com.example.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import com.example.unsplashphoto.model.entity.search.photo.SearchPhotoResp
+import com.example.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.example.unsplashphoto.model.entity.user.User
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
 
     private val photoSearch = 1
     private val collectionSearch = 2
+    private val userSearch = 3
 
     init {
         UnsplashPhotoApp.appComponent.inject(this)
@@ -61,24 +63,13 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         return collectionLive
     }
 
-
-    fun fetchPhotosByQuery(query: String, page: Int): MutableLiveData<SearchPhotoResp> {
-        val searchLive = MutableLiveData<SearchPhotoResp>()
-        viewModelScope.launch {
-            val search = repository.searchPhotoAsync(query, page)
-            searchLive.value = search
-        }
-
-        return searchLive
-    }
-
     fun search(typeSearch: Int, query: String, page: Int): MutableLiveData<List<Search>>{
         val searchLiveData = MutableLiveData<List<Search>>()
         viewModelScope.launch {
             when (typeSearch) {
                 1 -> searchLiveData.value = parseSearchPhoto(repository.searchPhotoAsync(query, page))
                 2 -> searchLiveData.value = parseSearchCollection(repository.searchCollectionAsync(query, page))
-                3 -> searchLiveData.value = parseSearchPhoto(repository.searchPhotoAsync(query, page))
+                3 -> searchLiveData.value = parseSearchUser(repository.searchUserAsync(query, page))
             }
         }
         return searchLiveData
@@ -121,6 +112,14 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         val listSearch = mutableListOf<Search>()
         for (value in data.results) {
             listSearch.add(Search(value.id.toString(), value.coverPhoto.urls.full, collectionSearch))
+        }
+        return listSearch
+    }
+
+    private fun parseSearchUser(data: SearchUserResp): List<Search> {
+        val listSearch = mutableListOf<Search>()
+        for (value in data.results) {
+            listSearch.add(Search(value.username, value.profileImage.large, userSearch))
         }
         return listSearch
     }

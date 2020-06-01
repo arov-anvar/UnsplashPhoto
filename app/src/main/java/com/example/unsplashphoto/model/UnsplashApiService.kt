@@ -7,6 +7,7 @@ import com.example.unsplashphoto.model.entity.photos.PhotoResp
 import com.example.unsplashphoto.model.entity.popular.DailyResp
 import com.example.unsplashphoto.model.entity.search.collection.SearchCollectionResp
 import com.example.unsplashphoto.model.entity.search.photo.SearchPhotoResp
+import com.example.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.example.unsplashphoto.model.entity.user.User
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
@@ -86,6 +87,12 @@ interface UnsplashApiService {
         @Query("page") page: Int,
         @Query("query") query: String
     ): Deferred<SearchCollectionResp>
+
+    @GET("/search/users/")
+    fun searchUsersAsync(
+        @Query("page") page: Int,
+        @Query("query") query: String
+    ): Deferred<SearchUserResp>
 
     @GET("/photos/{id}")
     fun getPhotoAsync(

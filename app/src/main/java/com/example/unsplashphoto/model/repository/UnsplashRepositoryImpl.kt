@@ -8,6 +8,7 @@ import com.example.unsplashphoto.model.entity.photos.PhotoResp
 import com.example.unsplashphoto.model.entity.popular.DailyResp
 import com.example.unsplashphoto.model.entity.search.collection.SearchCollectionResp
 import com.example.unsplashphoto.model.entity.search.photo.SearchPhotoResp
+import com.example.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.example.unsplashphoto.model.entity.user.User
 import javax.inject.Inject
 
@@ -33,6 +34,8 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Unsplas
     override suspend fun searchCollectionAsync(query: String, page: Int): SearchCollectionResp =
         apiService.searchCollectionsAsync(page, query).await()
 
+    override suspend fun searchUserAsync(query: String, page: Int): SearchUserResp =
+        apiService.searchUsersAsync(page, query).await()
 
     override suspend fun getPhotoByIdAsync(id: String): Photo =
         apiService.getPhotoAsync(id).await()

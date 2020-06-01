@@ -6,6 +6,7 @@ import com.example.unsplashphoto.model.entity.photos.PhotoResp
 import com.example.unsplashphoto.model.entity.popular.DailyResp
 import com.example.unsplashphoto.model.entity.search.collection.SearchCollectionResp
 import com.example.unsplashphoto.model.entity.search.photo.SearchPhotoResp
+import com.example.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.example.unsplashphoto.model.entity.user.User
 
 interface UnsplashRepository {
@@ -15,6 +16,7 @@ interface UnsplashRepository {
     suspend fun getMostPopularPicture(): List<DailyResp>
     suspend fun searchPhotoAsync(query: String, page: Int): SearchPhotoResp
     suspend fun searchCollectionAsync(query: String, page: Int): SearchCollectionResp
+    suspend fun searchUserAsync(query: String, page: Int): SearchUserResp
     suspend fun getPhotoByIdAsync(id: String): Photo
     suspend fun getUserByAsync(userName: String): User
 

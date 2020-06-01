@@ -38,8 +38,8 @@ class SearchAdapter: RecyclerView.Adapter<SearchAdapter.PhotoViewHolder>() {
                         itemView.findNavController().navigate(R.id.currentCollectionFragment, args)
                     }
                     3 -> {
-                        val args = bundleOf("photoId" to search.id)
-                        itemView.findNavController().navigate(R.id.photoFragment, args)
+                        val args = bundleOf("userName" to search.id)
+                        itemView.findNavController().navigate(R.id.userFragment, args)
                     }
                 }
 
