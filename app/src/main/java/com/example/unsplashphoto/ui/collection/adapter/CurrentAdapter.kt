@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.unsplashphoto.R
 import com.example.unsplashphoto.loadImage
@@ -18,7 +20,8 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
         fun bind(currentItem: CurrentItem) {
             currentImageView.loadImage(currentItem.photoUrl)
             itemView.setOnClickListener {
-                listener.onCurrentItemSelected(currentItem.id)
+                val args = bundleOf("photoId" to currentItem.id)
+                itemView.findNavController().navigate(R.id.photoFragment, args)
             }
         }
     }

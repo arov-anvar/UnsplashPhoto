@@ -77,11 +77,13 @@
         android:name="com.example.unsplashphoto.ui.collection.CurrentCollectionFragment"
         android:label="current_collection_fragment"
         tools:layout="@layout/current_collection_fragment">
+
         <action
-            android:id="@+id/action_galleryFragment_to_currentCollectionFragment"
-            app:destination="@id/currentCollectionFragment">
+            android:id="@+id/action_currentCollectionFragment_to_photoFragment"
+            app:destination="@id/photoFragment">
+
             <argument
-                android:name="photoUrl"
+                android:name="photoId"
                 app:argType="string" />
         </action>
     </fragment>
