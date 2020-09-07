@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dailyPictureFragment"
-        android:name="com.example.unsplashphoto.ui.daily.DailyPictureFragment"
+        android:name="com.anvar.unsplashphoto.ui.daily.DailyPictureFragment"
         android:label="daily_picture_fragment"
         tools:layout="@layout/daily_picture_fragment">
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.unsplashphoto.ui.gallery.GalleryFragment"
+        android:name="com.anvar.unsplashphoto.ui.gallery.GalleryFragment"
         android:label="gallery_fragment"
         tools:layout="@layout/gallery_fragment">
         <action
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.unsplashphoto.ui.search.SearchFragment"
+        android:name="com.anvar.unsplashphoto.ui.search.SearchFragment"
         android:label="search_fragment"
         tools:layout="@layout/search_fragment">
         <action
@@ -67,14 +67,14 @@
 
     <fragment
         android:id="@+id/photoFragment"
-        android:name="com.example.unsplashphoto.ui.photo.PhotoFragment"
+        android:name="com.anvar.unsplashphoto.ui.photo.PhotoFragment"
         android:label="photo_fragment"
         tools:layout="@layout/photo_fragment" />
 
 
     <fragment
         android:id="@+id/currentCollectionFragment"
-        android:name="com.example.unsplashphoto.ui.collection.CurrentCollectionFragment"
+        android:name="com.anvar.unsplashphoto.ui.collection.CurrentCollectionFragment"
         android:label="current_collection_fragment"
         tools:layout="@layout/current_collection_fragment">
 
@@ -91,7 +91,7 @@
 
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.unsplashphoto.ui.user.UserFragment"
+        android:name="com.anvar.unsplashphoto.ui.user.UserFragment"
         android:label="user_fragment"
         tools:layout="@layout/user_fragment">
 
