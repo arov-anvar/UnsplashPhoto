@@ -15,6 +15,9 @@ import com.anvar.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import com.anvar.unsplashphoto.model.entity.search.photo.SearchPhotoResp
 import com.anvar.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.anvar.unsplashphoto.model.entity.user.User
+import com.anvar.unsplashphoto.model.entity.user_images.UserImages
+import com.anvar.unsplashphoto.model.entity.user_images.UserImagesItem
+import com.anvar.unsplashphoto.ui.user.UserImageItem
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -91,6 +94,19 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
             userLive.value = user
         }
         return userLive
+    }
+
+    fun getUserImages(userName: String): MutableLiveData<List<UserImageItem>> {
+        val userImagesLive = MutableLiveData<List<UserImageItem>>()
+        viewModelScope.launch {
+            val userImages = repository.getUserImagesByAsync(userName).toList()
+            val users = mutableListOf<UserImageItem>()
+            userImages.forEach {
+                users.add(UserImageItem(it.urls.raw))
+            }
+            userImagesLive.value = users
+        }
+        return userImagesLive
     }
 
 

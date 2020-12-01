@@ -94,10 +94,21 @@
         tools:countText="800"/>
 
     <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorBlack"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@+id/pictureUserImg"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imagesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="150dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:spanCount="3"
+        tools:listitem="@layout/user_image_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import com.anvar.unsplashphoto.model.entity.search.collection.SearchCollectionRe
 import com.anvar.unsplashphoto.model.entity.search.photo.SearchPhotoResp
 import com.anvar.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.anvar.unsplashphoto.model.entity.user.User
+import com.anvar.unsplashphoto.model.entity.user_images.UserImages
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -103,4 +104,9 @@ interface UnsplashApiService {
     fun getUserAsync(
         @Path("username") userName: String
     ): Deferred<User>
+
+    @GET("/users/{username}/photos/")
+    fun getUserImagesAsync(
+        @Path("username") userName: String
+    ): Deferred<UserImages>
 }
