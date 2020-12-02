@@ -102,7 +102,7 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
             val userImages = repository.getUserImagesByAsync(userName).toList()
             val users = mutableListOf<UserImageItem>()
             userImages.forEach {
-                users.add(UserImageItem(it.urls.raw))
+                users.add(UserImageItem(it.urls.raw, it.id))
             }
             userImagesLive.value = users
         }

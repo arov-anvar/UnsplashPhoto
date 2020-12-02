@@ -15,16 +15,9 @@ import com.anvar.unsplashphoto.ui.UnsplashViewModel
 import com.anvar.unsplashphoto.loadImage
 import kotlinx.android.synthetic.main.daily_picture_fragment.*
 
-class DailyPictureFragment : Fragment() {
+class DailyPictureFragment : Fragment(R.layout.daily_picture_fragment) {
 
     private lateinit var viewModel: UnsplashViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.daily_picture_fragment, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

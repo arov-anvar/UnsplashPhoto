@@ -13,7 +13,7 @@ import android.os.Bundle
 import com.anvar.unsplashphoto.*
 
 
-class PhotoFragment: Fragment() {
+class PhotoFragment: Fragment(R.layout.photo_fragment) {
 
     lateinit var viewModel: UnsplashViewModel
     lateinit var urlPhoto: String
@@ -21,14 +21,6 @@ class PhotoFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.photo_fragment, container, false)
     }
 
     @SuppressLint("FragmentLiveDataObserve", "SetTextI18n")

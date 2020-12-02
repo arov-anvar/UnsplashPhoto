@@ -17,7 +17,7 @@ import com.anvar.unsplashphoto.ui.search.adapter.SearchAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
 
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(R.layout.search_fragment) {
 
     private lateinit var viewModel: UnsplashViewModel
     private lateinit var searchView: androidx.appcompat.widget.SearchView
@@ -27,13 +27,6 @@ class SearchFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.search_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

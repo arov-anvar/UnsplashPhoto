@@ -15,17 +15,10 @@ import com.anvar.unsplashphoto.ui.gallery.adapter.GalleryAdapter
 import com.anvar.unsplashphoto.mapToGalleryItem
 import kotlinx.android.synthetic.main.gallery_fragment.*
 
-class GalleryFragment : Fragment() {
+class GalleryFragment : Fragment(R.layout.gallery_fragment) {
 
     private val galleryAdapter = GalleryAdapter()
     private lateinit var viewModel: UnsplashViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.gallery_fragment, container, false)
-    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

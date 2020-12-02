@@ -14,7 +14,7 @@ import com.anvar.unsplashphoto.model.entity.user_images.UserImagesItem
 import com.anvar.unsplashphoto.ui.UnsplashViewModel
 import kotlinx.android.synthetic.main.user_fragment.*
 
-class UserFragment: Fragment() {
+class UserFragment: Fragment(R.layout.user_fragment) {
 
     lateinit var viewModel: UnsplashViewModel
 
@@ -24,14 +24,6 @@ class UserFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.user_fragment, container, false)
     }
 
     @SuppressLint("FragmentLiveDataObserve")
