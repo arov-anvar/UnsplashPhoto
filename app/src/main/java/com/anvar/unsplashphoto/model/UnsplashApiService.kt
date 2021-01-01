@@ -107,6 +107,8 @@ interface UnsplashApiService {
 
     @GET("/users/{username}/photos/")
     fun getUserImagesAsync(
-        @Path("username") userName: String
+        @Path("username") userName: String,
+        @Query("page") page: Int = 1,
+        @Query("per_page") perPage: Int
     ): Deferred<UserImages>
 }

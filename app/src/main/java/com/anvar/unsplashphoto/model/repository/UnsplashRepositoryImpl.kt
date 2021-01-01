@@ -44,8 +44,8 @@ class UnsplashRepositoryImpl @Inject constructor(private val apiService: Unsplas
     override suspend fun getUserByAsync(userName: String): User =
         apiService.getUserAsync(userName).await()
 
-    override suspend fun getUserImagesByAsync(userName: String): UserImages =
-        apiService.getUserImagesAsync(userName).await()
+    override suspend fun getUserImagesByAsync(userName: String, page: Int, perPage: Int): UserImages =
+        apiService.getUserImagesAsync(userName, page, perPage).await()
 
 
 

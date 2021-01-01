@@ -1,6 +1,7 @@
 package com.anvar.unsplashphoto.ui
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -15,8 +16,6 @@ import com.anvar.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import com.anvar.unsplashphoto.model.entity.search.photo.SearchPhotoResp
 import com.anvar.unsplashphoto.model.entity.search.user.SearchUserResp
 import com.anvar.unsplashphoto.model.entity.user.User
-import com.anvar.unsplashphoto.model.entity.user_images.UserImages
-import com.anvar.unsplashphoto.model.entity.user_images.UserImagesItem
 import com.anvar.unsplashphoto.ui.user.UserImageItem
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -96,17 +95,17 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         return userLive
     }
 
-    fun getUserImages(userName: String): MutableLiveData<List<UserImageItem>> {
-        val userImagesLive = MutableLiveData<List<UserImageItem>>()
+    val userImagesLiveData: MutableLiveData<List<UserImageItem>> = MutableLiveData(listOf())
+
+    fun getUserImages(userName: String, pageNumber: Int, perPage: Int) {
         viewModelScope.launch {
-            val userImages = repository.getUserImagesByAsync(userName).toList()
+            val userImages = repository.getUserImagesByAsync(userName, pageNumber, perPage).toList()
             val users = mutableListOf<UserImageItem>()
             userImages.forEach {
-                users.add(UserImageItem(it.urls.raw, it.id))
+                users.add(UserImageItem(it.urls.small, it.id))
             }
-            userImagesLive.value = users
+            userImagesLiveData.value = users
         }
-        return userImagesLive
     }
 
 
