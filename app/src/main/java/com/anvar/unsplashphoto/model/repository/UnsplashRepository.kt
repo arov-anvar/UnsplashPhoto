@@ -20,6 +20,6 @@ interface UnsplashRepository {
     suspend fun searchUserAsync(query: String, page: Int): SearchUserResp
     suspend fun getPhotoByIdAsync(id: String): Photo
     suspend fun getUserByAsync(userName: String): User
-    suspend fun getUserImagesByAsync(userName: String, page: Int = 1, perPage: Int): UserImages
+    suspend fun getUserImagesByAsync(userName: String, page: Int = 1): UserImages
 
 }

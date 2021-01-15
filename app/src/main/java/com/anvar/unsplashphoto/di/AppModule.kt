@@ -1,6 +1,7 @@
 package com.anvar.unsplashphoto.di
 
 import com.anvar.unsplashphoto.model.UnsplashApiService
+import com.anvar.unsplashphoto.model.repository.UnsplashRepository
 import com.anvar.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -11,6 +12,6 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideUnsplashRepository() = UnsplashRepositoryImpl(apiService = UnsplashApiService.invoke())
+    fun provideUnsplashRepository(): UnsplashRepository = UnsplashRepositoryImpl(apiService = UnsplashApiService.invoke())
 
 }

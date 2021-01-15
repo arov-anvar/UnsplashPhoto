@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.RecyclerView
 import com.anvar.unsplashphoto.R
 import com.anvar.unsplashphoto.loadImage
@@ -17,13 +18,10 @@ import kotlinx.android.synthetic.main.user_fragment.*
 
 class UserFragment: Fragment(R.layout.user_fragment) {
 
-    lateinit var viewModel: UnsplashViewModel
+    lateinit var viewModel: UserViewModel
 
     val list = mutableListOf<UserImageItem>()
     val adapter = UserImagesAdapter(list)
-    var pageNumber = 1
-    var countImages = Int.MAX_VALUE
-    private val perPage = 21
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,17 +31,12 @@ class UserFragment: Fragment(R.layout.user_fragment) {
     @SuppressLint("FragmentLiveDataObserve")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         val userName = arguments?.getString("userName") ?: ""
+        list.clear()
+        adapter.notifyDataSetChanged()
         imagesRecyclerView.adapter = adapter
-
-        val observer = Observer<List<UserImageItem>> { userImages ->
-            if (pageNumber == 1) list.clear()
-            list.addAll(userImages)
-            adapter.notifyDataSetChanged()
-            ++pageNumber
-        }
 
         viewModel.getUser(userName).observe(this@UserFragment, Observer {user ->
             userNameTxt.text = user.username
@@ -54,16 +47,17 @@ class UserFragment: Fragment(R.layout.user_fragment) {
             totalLikesTxt.setCount(user.totalLikes)
             totalPhotosTxt.setCount(user.totalPhotos)
             totalCollectionsTxt.setCount(user.totalCollections)
-
-            countImages = user.totalPhotos
         })
 
-        viewModel.userImagesLiveData.observe(this@UserFragment, observer)
-        viewModel.getUserImages(userName, pageNumber, perPage)
+        viewModel.userImagesLiveData.observe(this@UserFragment) { userImages ->
+            viewModel.isLoading = false
+            list.addAll(userImages)
+            adapter.notifyDataSetChanged()
+        }
 
         imagesRecyclerView.addOnScrollListener(object : RecyclerViewPaginator(imagesRecyclerView) {
             override fun loadMore() {
-                viewModel.getUserImages(userName, pageNumber, perPage)
+                viewModel.nextPage()
             }
         })
 

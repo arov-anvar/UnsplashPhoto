@@ -1,7 +1,6 @@
 package com.anvar.unsplashphoto.ui
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,11 +11,9 @@ import com.anvar.unsplashphoto.model.entity.photos.PhotoResp
 import com.anvar.unsplashphoto.model.entity.popular.DailyResp
 import com.anvar.unsplashphoto.model.entity.search.Search
 import com.anvar.unsplashphoto.model.entity.search.collection.SearchCollectionResp
-import com.anvar.unsplashphoto.model.repository.UnsplashRepositoryImpl
 import com.anvar.unsplashphoto.model.entity.search.photo.SearchPhotoResp
 import com.anvar.unsplashphoto.model.entity.search.user.SearchUserResp
-import com.anvar.unsplashphoto.model.entity.user.User
-import com.anvar.unsplashphoto.ui.user.UserImageItem
+import com.anvar.unsplashphoto.model.repository.UnsplashRepository
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,7 +21,7 @@ import javax.inject.Inject
 class UnsplashViewModel(application: Application): AndroidViewModel(application) {
 
     @Inject
-    lateinit var repository: UnsplashRepositoryImpl
+    lateinit var repository: UnsplashRepository
 
     private val photoSearch = 1
     private val collectionSearch = 2
@@ -85,29 +82,6 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         }
         return photoLive
     }
-
-    fun getUser(userName: String): MutableLiveData<User> {
-        val userLive = MutableLiveData<User>()
-        viewModelScope.launch {
-            val user = repository.getUserByAsync(userName)
-            userLive.value = user
-        }
-        return userLive
-    }
-
-    val userImagesLiveData: MutableLiveData<List<UserImageItem>> = MutableLiveData(listOf())
-
-    fun getUserImages(userName: String, pageNumber: Int, perPage: Int) {
-        viewModelScope.launch {
-            val userImages = repository.getUserImagesByAsync(userName, pageNumber, perPage).toList()
-            val users = mutableListOf<UserImageItem>()
-            userImages.forEach {
-                users.add(UserImageItem(it.urls.small, it.id))
-            }
-            userImagesLiveData.value = users
-        }
-    }
-
 
     override fun onCleared() {
         super.onCleared()
