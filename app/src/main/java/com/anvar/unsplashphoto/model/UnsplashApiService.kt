@@ -69,7 +69,7 @@ interface UnsplashApiService {
     fun getCollectionPhotosByIdAsync(
         @Path("id") id: Int,
         @Query("page") page: Int,
-        @Query("per_page") perPage: Int
+        @Query("per_page") perPage: Int = 5
     ): Deferred<List<PhotoResp>>
 
     @GET("/photos")

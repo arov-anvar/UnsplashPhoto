@@ -12,7 +12,6 @@ import com.anvar.unsplashphoto.loadImage
 
 class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() {
     private val currentCollection = mutableListOf<CurrentItem>()
-    private lateinit var listener: CurrentItemClickListener
 
     inner class CurrentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val currentImageView: ImageView = itemView.findViewById(R.id.galleryImageView)
@@ -27,7 +26,6 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
     }
 
     fun setItems(currentItems: MutableList<CurrentItem>) {
-        this.currentCollection.clear()
         this.currentCollection.addAll(currentItems)
         notifyDataSetChanged()
     }
@@ -44,9 +42,5 @@ class CurrentAdapter : RecyclerView.Adapter<CurrentAdapter.CurrentViewHolder>() 
     override fun onBindViewHolder(holder: CurrentViewHolder, position: Int) {
         val item = currentCollection[position]
         holder.bind(item)
-    }
-
-    interface CurrentItemClickListener {
-        fun onCurrentItemSelected(id: String)
     }
 }

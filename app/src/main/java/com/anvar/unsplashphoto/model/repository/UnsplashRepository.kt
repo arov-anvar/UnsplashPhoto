@@ -12,7 +12,7 @@ import com.anvar.unsplashphoto.model.entity.user_images.UserImages
 
 interface UnsplashRepository {
 
-    suspend fun getCollectionByIdAsync(id: Int, page: Int, perPage: Int): List<PhotoResp>
+    suspend fun getCollectionByIdAsync(id: Int, page: Int): List<PhotoResp>
     suspend fun getCollectionsAsync(page: Int, perPage: Int): List<GalleryResp>
     suspend fun getMostPopularPicture(): List<DailyResp>
     suspend fun searchPhotoAsync(query: String, page: Int): SearchPhotoResp

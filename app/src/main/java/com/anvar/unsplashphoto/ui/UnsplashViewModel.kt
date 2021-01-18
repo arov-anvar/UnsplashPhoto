@@ -31,16 +31,6 @@ class UnsplashViewModel(application: Application): AndroidViewModel(application)
         UnsplashPhotoApp.appComponent.inject(this)
     }
 
-    fun getCollection(id: Int, page: Int, perPage: Int): MutableLiveData<List<PhotoResp>> {
-        val collectionLive = MutableLiveData<List<PhotoResp>>()
-        viewModelScope.launch {
-            val collection = repository.getCollectionByIdAsync(id, page, perPage)
-            collectionLive.value = collection
-        }
-
-        return collectionLive
-    }
-
     fun getCollections(page: Int, perPage: Int): MutableLiveData<List<GalleryResp>> {
         val collectionsLive = MutableLiveData<List<GalleryResp>>()
         viewModelScope.launch {

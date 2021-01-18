@@ -10,32 +10,44 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anvar.unsplashphoto.R
+import com.anvar.unsplashphoto.UnsplashPhotoApp
 import com.anvar.unsplashphoto.ui.UnsplashViewModel
 import com.anvar.unsplashphoto.mapToCollectionItems
 import com.anvar.unsplashphoto.ui.collection.adapter.CurrentAdapter
+import com.anvar.unsplashphoto.ui.user.RecyclerViewPaginator
 import kotlinx.android.synthetic.main.current_collection_fragment.*
+import javax.inject.Inject
 
 class CurrentCollectionFragment : Fragment(R.layout.current_collection_fragment) {
-    private val currentAdapter =
-        CurrentAdapter()
-    private lateinit var viewModel : UnsplashViewModel
 
-    @SuppressLint("FragmentLiveDataObserve")
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(UnsplashViewModel::class.java)
+    private lateinit var viewModel : CurrentCollectionViewModel
+    private val currentAdapter = CurrentAdapter()
 
-        with(imageRecycler) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(CurrentCollectionViewModel::class.java)
+
+        imageRecycler.apply {
             adapter = currentAdapter
             layoutManager = LinearLayoutManager(context)
+
+            addOnScrollListener(object : RecyclerViewPaginator(this) {
+                override fun loadMore() {
+                    viewModel.nexPage()
+                }
+            })
         }
 
         val id = arguments?.getInt("id", 0) ?: 0
-        viewModel.getCollection(id, 1, 30).observe(this, Observer {
+        viewModel.apply {
+            if (mIdCollection == 0) mIdCollection = id
+        }
+        viewModel.collection.observe(this, Observer {
             currentProgressBar.visibility = View.GONE
             imageRecycler.visibility = View.VISIBLE
             currentAdapter.setItems(it.mapToCollectionItems())
         })
-    }
 
+
+    }
 }
